@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "student-api-collection",
+		"name": "Student Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Lấy danh sách sinh viên",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "http://localhost:8082/api/students",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8082",
+					"path": ["api", "students"]
+				}
+			}
+		},
+		{
+			"name": "2. Lấy chi tiết sinh viên theo MaSV",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "http://localhost:8082/api/students/SV001",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8082",
+					"path": ["api", "students", "SV001"]
+				}
+			}
+		},
+		{
+			"name": "3. Tìm kiếm sinh viên",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "http://localhost:8082/api/students/search?keyword=Nguyễn",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8082",
+					"path": ["api", "students", "search"],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "Nguyễn"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "4. Thêm mới sinh viên",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"maSV\": \"SV010\",\n  \"hoTen\": \"Lê Văn X\",\n  \"email\": \"xlv010@donga.edu.vn\",\n  \"sdt\": \"0911223344\",\n  \"lop\": \"C2024A\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/students",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8082",
+					"path": ["api", "students"]
+				}
+			}
+		},
+		{
+			"name": "5. Cập nhật sinh viên theo MaSV",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"hoTen\": \"Lê Văn X (Đã sửa)\",\n  \"email\": \"xlv010@donga.edu.vn\",\n  \"sdt\": \"0999888777\",\n  \"lop\": \"C2024B\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/students/SV010",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8082",
+					"path": ["api", "students", "SV010"]
+				}
+			}
+		},
+		{
+			"name": "6. Xóa sinh viên theo MaSV",
+			"request": {
+				"method": "DELETE",
+				"url": {
+					"raw": "http://localhost:8082/api/students/SV010",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8082",
+					"path": ["api", "students", "SV010"]
+				}
+			}
+		}
+	]
+}
