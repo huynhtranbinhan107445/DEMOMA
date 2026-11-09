@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 import java.text.Normalizer;
@@ -28,7 +29,9 @@ public class DemoApplication {
         return noAccent.toLowerCase() + maSV.toLowerCase() + "@donga.edu.vn";
     }
 
+    // Chi tao tai khoan mau khi APP_DEMO_SEED=true (khong bat tren production).
     @Bean
+    @ConditionalOnProperty(name = "app.demo.seed", havingValue = "true")
     CommandLineRunner initData(StudentRepository repository) {
         return args -> {
             // Kiểm tra và khởi tạo dữ liệu mẫu nếu DB MongoDB đang trống
